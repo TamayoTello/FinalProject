@@ -1,0 +1,71 @@
+extends layout
+
+block content
+
+  #page-content.container
+    .row
+      .col-md-8.col-md-offset-1
+        // CONTENT
+        br
+        .login-container
+          .page-header
+            h1
+              center
+                | Create your Ed-Streaming Account.
+            h3
+              center  
+                | One account is all you need 
+
+          form.form-horizontal(method= 'POST', action= '/auth/register', onsubmit= 'return fieldValidate()')
+            .row
+              br
+              br
+              br
+              .col-md-10.col-md-offset-3
+                p
+                if (loginStatus)
+                  center
+                    h6(style= "padding: 1%")= loginStatus
+                    br
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Username
+                  input.form-control(name= 'username', type='text', placeholder='username', aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon First Name
+                  input.form-control(name= 'firstName', type='text', placeholder='firt name', aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Last Name
+                  input.form-control(name= 'lastName', type='text', placeholder='last name', aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Email Address
+                  input.form-control(name= 'email', type='text', placeholder='email address', aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Password 
+                  input.form-control(name= 'password', type='password', placeholder='password', aria-describedby='sizing-addon1')
+                p
+                br
+                .col-md-5.col-md-offset-2
+                  center
+                    .btn-group
+                      button.btn.btn-success(name='action', type='submit') Sign me Up
+                p
+        .panel-signup-footer
+          .box-content
+            h3
+              center
+                | Already Have an Account?
+                br
+                p
+                .btn-group
+                  a(href= '/auth/login')
+                    button.btn.btn-primary(type='button') Login Here

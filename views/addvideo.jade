@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  if (user.username =="teamjuan")
+    #page-content.container
+      .row
+        .col-md-9.col-sm-12.content-holder
+          // CONTENT
+          #menu-container
+            a.site-brand
+              .box-content
+                h3.widget-title A D D - V I D E O
+              .col-md-15.col-sm-15
+                .box-content
+                  .video-container
+                    form.task-form(method= 'POST', action= '/videos/new', onsubmit= 'return validateTaskForm()')
+                      .row
+                        br
+                        br
+                        fieldset.col-md-offset-3.col-md-9
+                          p
+                            | V I D E O  - T I T L E  :
+                            input#taskName.task(name='videoTitle', type='text', placeholder='e.g., Shopping')
+                          p
+                            | V I D E O - E M B E D :
+                            br
+                            textarea#taskDetails.task(name='videoEmbed',rows='3', cols='10', placeholder='e.g., Buy a dress')
+                          p
+                            | V I D E O - D E T A I L S :
+                            br
+                            textarea#taskDetails.task(name='videoDetails', type='text', rows='3', cols='10', placeholder='e.g., Buy a dress')
+                          p
+                            | V I D E O - C A T E G O R Y :
+                            br
+                            select(name='videoCategory')
+                              option(value='No Category' , selected='') No Category
+                              option(value='Mathematics') Mathematics
+                              option(value='English') English
+                              option(value='Filipino') Filipino
+                              option(value='Science') Science
+                              option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                              option(value='AP') Araling Panlipunan
+                              option(value='Values') Values
+                            br
+                            br
+                          input#submit.button.default(name='submit', type='submit', value='Add to list')
+  else
+    a.site-brand
+      .box-content
+        h3.widget-title R E S T R I C T E D - A R E A 

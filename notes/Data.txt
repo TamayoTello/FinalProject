@@ -1,0 +1,19 @@
+Data
+
+Video Title - videoTitle
+Video Category - videoCategory
+Video Details - videoDetails
+Video Embed - videoEmbed
+Video Date Submitted - videoDate
+Video Date Updated - videoUpdateDate
+
+
+Subject Matters
+
+Mathematics
+English
+Filipino
+Science
+MAPEH (Music, Arts, P.E, Health)
+AP (Araling Panlipunan)
+Values

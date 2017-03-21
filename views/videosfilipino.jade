@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  #page-content.container
+    .row
+      .col-md-9.col-sm-12.content-holder
+        // CONTENT
+        #menu-container
+          a.site-brand
+            .box-content
+              h3.widget-title3 V I D E O - L I S T
+              form(method='post', action='/videos', onsubmit='forSearching()')
+                input#search(type='search', placeholder='Search Video Here', style= 'color: black')
+              br
+              h4#banner-description(style= 'color: white')
+
+          .container
+              h3 Filipino
+              ul.nav.nav-tabs
+                li
+                  a(href='/videos') All Videos
+                li
+                  a(href='/videos/Science') Science
+                li
+                  a(href='/videos/Math') Mathematics
+                li.active
+                  a(href='/videos/Filipino/') Filipino
+                li
+                  a(href='/videos/English') English
+                li
+                  a(href='/videos/AralingPanlipunan') Araling Panlipunan
+                li
+                  a(href='/videos/Mapeh') Musics, Arts, P.E., Health
+                li
+                  a(href='/videos/Values') Values
+              br
+
+            .container.center#allLinks
+            .col-md-15.col-sm-15
+              .box-content2
+                form.task-form(action='/videos', method='get')
+                  .row
+                    br
+                    br
+                    fieldset.col-md-offset-3.col-md-10
+                      br
+                      table
+                        br
+                        tr
+                          th(style='width:30%') V I D E O - N A M E 
+                          th(style='width:30%') CA T E G O R Y
+                          th(style='width:25%')
+
+                        tbody#data
+                            each video, i in videos
+                              if (video.videoCategory == "Filipino")
+                                tr
+                                  td= video.videoTitle
+                                  td= video.videoCategory
+                                  td
+                                    a.red-text(href= "/videos/" + video._id)
+                                      button.button(type='button') S E E - V I D E O
+                br
+                br
+                        

@@ -1,0 +1,58 @@
+extends layout
+
+block content
+
+  #page-content.container
+    .row
+      .col-md-8.col-md-offset-1
+        // CONTENT
+        br
+        .login-container
+          .page-header
+            h1
+              center
+                | Log-in. Here.
+            h3
+              center  
+                | Sign in with your Ed-Streaming Account 
+
+          form.form-horizontal(method= 'POST', action= '/auth/login')
+            .row
+              br
+              br
+              br
+              .col-md-10.col-md-offset-3
+                p
+                if (loginStatus)
+                  center
+                    h6(style= "padding: 1%")= loginStatus
+                    br
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Username
+                  input.form-control(name= 'username', type='text', placeholder='username', aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Password 
+                  input.form-control(name= 'password', type='password', placeholder='password', aria-describedby='sizing-addon1')
+                p
+                br
+                .col-md-5.col-md-offset-2
+                  center
+                    .btn-group
+                      button.btn.btn-warning(name='submit', type='submit') Sign In
+                p
+        .panel-login-footer
+          .box-content
+            h3
+              center
+                | Don't Have an Account Yet?
+                br
+                p
+                .btn-group
+                  a(href= '/auth/register')
+                    button.btn.btn-danger(type='button') Create an Account
+        p 
+                      

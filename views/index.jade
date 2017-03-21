@@ -1,0 +1,48 @@
+extends layout
+
+block content
+
+  if (!user)
+    #page-content.container
+      .row
+        .col-md-9.col-sm-12.content-holder
+          // CONTENT
+          #menu-container
+            .logo-holder.logo-top-margin
+              a.site-brand
+                img(src='../images/TJLogo.png', alt='')
+              br
+              a(href='/auth/login')
+                button.button(type='button') L O G - I N - H E R E 
+              br
+              a(href='/auth/register')
+                button.button2(type='button') S I G N - U P - H E R E
+              br
+  else
+    #page-content.container
+      center
+                br
+                if (user.first_name == "")
+                  b
+                    .box-content3
+                      h3.widget-title W E L C O M E #{user.username}!
+                else
+                  b
+                    .box-content3
+                      h3.widget-title  W E L C O M E #{user.first_name} #{user.last_name}!
+      .row
+        .col-md-9.col-sm-12.content-holder
+          // CONTENT
+          #menu-container
+            .logo-holder.logo-top-margin
+              a.site-brand
+                img(src='../images/TJLogo.png', alt='')
+              br
+              a(href='tasks/new')
+                button.button6(type='button') A D D - T A S K - H E R E
+              a(href='/tasks')
+                button.button7(type='button') C H E C K - T A S K S - H E R E
+              
+
+            
+            

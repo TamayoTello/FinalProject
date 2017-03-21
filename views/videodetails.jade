@@ -1,0 +1,60 @@
+extends layout
+
+block content
+
+
+  #page-content.container
+    .row
+      .col-md-9.col-sm-12.content-holder
+        // CONTENT
+        #menu-container
+          a.site-brand
+            .box-content
+              h3.widget-title4  V I D E O - R E Q U E S T
+            .col-md-15.col-sm-15
+              .video-container
+                iframe(width= '600', height= '400', src= videoInfo.videoEmbed, frameborder= '0', allowfullscreen)
+              br
+              .box-content
+                form.task-form(action='/videos', method='get')
+                  .row
+                    br
+                    br
+                    fieldset.col-md-offset-3.col-md-9
+                      p
+                        | V I D E O - T I T L E : 
+                        br
+                        | #{videoInfo.videoTitle}  
+                      br
+                      p
+                        | V I D E O - D E T A I L S  : 
+                        br
+                        | #{videoInfo.videoDetails}
+                      br
+                      p
+                        | V I D E O - E M B E D :
+                        br
+                        | #{videoInfo.videoEmbed}
+                      br
+                      p
+                        | V I D E O - C A T E G O R Y :
+                        br
+                        | #{videoInfo.videoCategory}
+                      br
+                      p
+                        | D A T E - C R E A T E D :
+                        br
+                        | #{videoInfo.videoDate}
+                      br
+                      p
+                        | D A T E - U P D A T E D :
+                        br
+                        | #{videoInfo.videoUpdatedDate}
+                      br
+                      if (user.username == "teamjuan")
+                        a.red-text(href= '/videos/' + videoInfo._id + '/edit')
+                          button.button3(type='button') U P D A T E
+                        a.red-text(href= '/videos')
+                          button.button3(type='button') B A C K
+                        a.red-text(href= '/videos/' + videoInfo._id + '/delete', onclick= 'return confirmDelete()')
+                          button.button3(type='button') D E L E T E                      

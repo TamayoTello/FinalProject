@@ -1,0 +1,47 @@
+extends layout
+
+block content
+
+  #page-content.container
+    .row
+      .col-md-9.col-sm-12.content-holder
+        //CONTENT
+        #menu-container
+          a.site-brand
+            .box-content
+              h3.widget-title U P D A T E - V I D E O
+            .col-md-15.col-sm-15
+              .box-content
+
+                form.task-form(method= 'POST', action= '/videos/new', onsubmit= 'return validateTaskForm()')
+                    .row
+                      br
+                      br
+                      fieldset.col-md-offset-3.col-md-9
+                        p
+                          | V I D E O  - T I T L E  :
+                          input#taskName.task(name='videoTitle', type='text', value=  requestInfo.reqVideoTitle)
+                        p
+                          | V I D E O - E M B E D :
+                          br
+                          input#taskDetails.task(name='videoEmbed', type='text', value= requestInfo.reqVideoEmbed)
+                        p
+                          | V I D E O - D E T A I L S :
+                          br
+                          input#taskDetails.task(name='videoDetails', type='text', value= requestInfo.reqVideoDetails)
+                        p
+                          | V I D E O - C A T E G O R Y :
+                          br
+                          select(name='videoCategory', selected= requestInfo.reqVideoCategory)
+                            option(value='No Category') No Category
+                            option(value='Mathematics') Mathematics
+                            option(value='English') English
+                            option(value='Filipino') Filipino
+                            option(value='Science') Science
+                            option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                            option(value='AP') Araling Panlipunan
+                            option(value='Values') Values
+                          br
+                          br
+                        input#submit.button.default(name='submit', type='submit', value='Accept Item')
+
