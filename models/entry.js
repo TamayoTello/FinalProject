@@ -19,7 +19,7 @@ var entrySchema = new Schema({
     	type: String,
     	required: true
     },
-    reqVideoDate: String,
+    videoDate: String,
     videoUpdateDate: String,
 
 },

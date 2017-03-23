@@ -3,6 +3,7 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
 
 var Entry = require('../models/entry');
+var Comment = require('../models/comments');
 
 var date = new Date();
 var getDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
@@ -141,11 +142,43 @@ router.post('/new', function(req, res) {
     videoDetails: req.body.videoDetails,
     videoCategory: req.body.videoCategory,
     videoDate: getDate,
-    videoUpdateDate: getDate
   };
 
   var data = new Entry(dataToSave)
   data.save(function(err, videos){
+    if(err) {
+      console.log('Saving Data Failed!');
+      addStatus = 'Saving Data Failed!';
+    }
+    else {
+      console.log('Saving Data Successful!');
+      addStatus = 'Saving Data Success';
+      res.redirect('/videos');
+    }
+  });
+});
+
+
+//Adding new Comment
+router.get('/newcomment', function(req, res) {
+  console.log();
+  var data = {
+    status: addStatus,
+    user: req.user
+  }
+  res.render('videodetails', data);
+  addStatus = "";
+});
+
+//POST Method when submitting new Entry
+router.post('/newcomment', function(req, res) {
+  var dataToSave = {
+    videoComment: req.body.videoComment,
+    commentDate: getDate,
+  };
+
+  var data = new Entry(dataToSave)
+  data.save(function(err, comments){
     if(err) {
       console.log('Saving Data Failed!');
       addStatus = 'Saving Data Failed!';
@@ -190,7 +223,6 @@ router.post('/:videoId', function(req, res){
     videoEmbed: req.body.videoEmbed,
     videoDetails: req.body.videoDetails,
     videoCategory: req.body.videoCategory,
-    videoUpdateDate: getDate
   }
 
   Entry.update({_id: videoId}, {$set: newData}, function(err, result) {

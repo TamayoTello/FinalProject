@@ -5,38 +5,108 @@ block content
   if (!user)
     #page-content.container
       .row
-        .col-md-9.col-sm-12.content-holder
+        .col-md-8.col-md-offset-1
           // CONTENT
-          #menu-container
-            .logo-holder.logo-top-margin
-              a(href='/auth/login')
-                button.button(type='button') Login Here 
+          br
+          .login-container
+            .page-header
+              h1
+                center
+                  | EDUCATIONAL STREAMING
+              h3
+                center  
+                  | Standards-based education material covering a broad range of subjects. 
               br
-              a(href='/auth/register')
-                button.button2(type='button') Create an Account
-              br
+            .page-header
+              h3
+                center 
+                  br
+                  | Take the world's best lessons, Online.
+                  br
+                  br
+            .page-header
+              h3
+                center
+                  br
+                  | Ed-Streaming provides universal access to the world’s best education.
+                  br
+                  br
+
+
+          .panel-index-footer
+            .box-content
+              h4
+                center
+                  | Sign-up today to join over a million learners on Ed-Streaming.
+                  br
+                  p
+                  .btn-group
+                    a(href= '/auth/register')
+                      button.btn.btn-danger(type='button') Create an Account
+            br
+            .box-content
+              h4
+                center
+                  | or continue studying now.
+                  br
+                  p
+                  .btn-group
+                    a(href= '/auth/login')
+                      button.btn.btn-primary(type='button') Log in Now
+        p 
+      
   else
     #page-content.container
-      center
-                br
-                if (user.first_name == "")
-                  b
-                    .box-content3
-                      h3.widget-title W E L C O M E #{user.username}!
-                else
-                  b
-                    .box-content3
-                      h3.widget-title  W E L C O M E #{user.first_name} #{user.last_name}!
       .row
-        .col-md-9.col-sm-12.content-holder
+        .col-md-8.col-md-offset-1
           // CONTENT
-          #menu-container
-
+          br
+          .login-container
+            .page-header
+              h1
+                center
+                  | WELCOME
+              h3
+                center  
+                  | #{user.first_name} #{user.last_name}!
               br
-              a(href='/videos')
-                button.button6(type='button') Check Out Videos
-              a(href='/requests/new')
-                button.button7(type='button') Send a Request
+            .page-header
+              h3
+                center 
+                  br
+                  | Take the world's best lessons, Online.
+                  br
+                  br
+            .page-header
+              h3
+                center
+                  br
+                  | Ed-Streaming provides universal access to the world’s best education.
+                  br
+                  br
+
+
+          .panel-index-footer
+            .box-content
+              h4
+                center
+                  | Sign-up today to join over a million learners on Ed-Streaming.
+                  br
+                  p
+                  .btn-group
+                    a(href= '/requests/new')
+                      button.btn.btn-success(type='button') Send a Request
+            br
+            .box-content
+              h4
+                center
+                  | or continue studying now.
+                  br
+                  p
+                  .btn-group
+                    a(href= '/videos')
+                      button.btn.btn-warning(type='button') Check Out Videos
+        p 
               
 
             

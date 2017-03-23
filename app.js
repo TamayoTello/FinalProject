@@ -35,7 +35,7 @@ var users = require('./routes/users');
 var auth = require('./routes/auth');
 var videos = require('./routes/videos');
 var requests = require('./routes/requests');
-
+var comments = require('./routes/comments');
 
 var app = express();
 
@@ -62,6 +62,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var User = require('./models/users');
+var Comment = require('./models/comments');
 
 
 

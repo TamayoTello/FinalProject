@@ -128,7 +128,7 @@ if(window.location.pathname === '/videos') {
 					var tbody = document.getElementById('data');
 					entry.forEach(function(entry){
 					tbody.insertAdjacentHTML('beforeend', '<tr><td>'  + entry.videoTitle + '</td><td>' + entry.videoCategory + '</td><td>' +
-					'</td>' + '<td><a href = "/videos/' + entry._id + '", class = "red-text">' + '<input type = "button", value = "See Video"/>' + '</td></tr>');
+					'</td>' + '<td><a href = "/videos/' + entry._id + '", class = "red-text">' + '<input type = "button", class = "btn btn-success", value = "See Video"/>' + '</td></tr>');
 				});
 			
 			});
@@ -180,7 +180,8 @@ if(window.location.pathname === '/videos') {
 				var tbody = document.getElementById('data');
 				result.forEach(function(result){
 					tbody.insertAdjacentHTML('beforeend', '<tr><td>'  + result.videoTitle + '</td><td>' + result.videoCategory + '</td><td>' +
-				'</td>' + '<td><a href = "/videos/' + result._id + '", class = "red-text">' + '<input type = "button", value = "See Video"/>' + "See Video" + '</td></tr>');
+				'</td>' + '<td><a href = "/videos/' + result._id + '", class = "red-text">' + '<input type = "button",  class = "btn btn-success", value = "See Video"/>' + '</td></tr>' );
+					tbody.insertAdjacentHTML('beforeend', 'br' );
 				});
 				localStorage.setItem("search", null);
 				});

@@ -1,45 +1,71 @@
 extends layout
 
 block content
-  #page-content.container
+   #page-content.container
     .row
-      .col-md-9.col-sm-12.content-holder
+      .col-md-8.col-md-offset-1
         // CONTENT
-        #menu-container
-          a.site-brand
-            .box-content
-              h3.widget-title R E Q U E S T - A - V I D E O
-            .col-md-15.col-sm-15
-              .box-content
-                .video-container
-                  form.task-form(method= 'POST', action= '/requests/new', onsubmit= 'return validateTaskForm()')
-                    .row
-                      br
-                      br
-                      fieldset.col-md-offset-3.col-md-9
-                        p
-                          | V I D E O  - T I T L E  :
-                          input#taskName.task(name='reqVideoTitle', type='text', placeholder='e.g., Shopping')
-                        p
-                          | V I D E O - E M B E D :
-                          br
-                          textarea#taskDetails.task(name='reqVideoEmbed',rows='3', cols='10', placeholder='e.g., Buy a dress')
-                        p
-                          | V I D E O - D E T A I L S :
-                          br
-                          textarea#taskDetails.task(name='reqVideoDetails', type='text', rows='3', cols='10', placeholder='e.g., Buy a dress')
-                        p
-                          | V I D E O - C A T E G O R Y :
-                          br
-                          select(name='reqVideoCategory')
-                            option(value='No Category' , selected='') No Category
-                            option(value='Mathematics') Mathematics
-                            option(value='English') English
-                            option(value='Filipino') Filipino
-                            option(value='Science') Science
-                            option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
-                            option(value='AP') Araling Panlipunan
-                            option(value='Values') Values
-                          br
-                          br
-                        input#submit.button.default(name='submit', type='submit', value='Send Request')
+        br
+        .login-container
+          .page-header
+            h1
+              center
+                | Help Us. Send a Request
+            h3
+              center  
+                | Requests will be reviewed by the Admins before publishing
+
+          form.form-horizontal(method= 'POST', action= '/requests/new', onsubmit= 'return validateTaskForm()')
+            .row
+              br
+              br
+              br
+              .col-md-10.col-md-offset-3
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Video Title
+                  input.form-control(name='reqVideoTitle', type='text', placeholder='Algebra Tutorial', aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Video Embed
+                  input.form-control(name='reqVideoEmbed', placeholder='https://www.youtube.com/embed/T8B8Tcz8kog', aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Video Details
+                  input.form-control(name='reqVideoDetails', type='text', rows='3', cols='10', placeholder='Finding X', aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Video Category
+                  select.form-control(name='reqVideoCategory')
+                    option(value='No Category' , selected='') No Category
+                    option(value='Mathematics') Mathematics
+                    option(value='English') English
+                    option(value='Filipino') Filipino
+                    option(value='Science') Science
+                    option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                    option(value='AP') Araling Panlipunan
+                    option(value='Values') Values
+                br
+                br
+                br
+                .col-md-5.col-md-offset-2
+                  center
+                    .btn-group
+                      button.btn.btn-primary(name='submit', type='submit') Send a Request
+                p
+        .panel-login-footer
+          .box-content
+            h3
+              center
+                | Wanna Learn Now?
+                br
+                p
+                .btn-group
+                  a(href= '/videos')
+                    button.btn.btn-success(type='button') Check Videos
+        p 
+     

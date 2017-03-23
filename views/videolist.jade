@@ -33,7 +33,6 @@ block content
                   a(href='/videos/Mapeh') Musics, Arts, P.E., Health
                 li
                   a(href='/videos/Values') Values
-              br
 
             .container.center#allLinks
             .col-md-15.col-sm-15
@@ -41,26 +40,16 @@ block content
                 form.task-form(action='/videos', method='get')
                   .row
                     br
-                    br
-                    fieldset.col-md-offset-3.col-md-10
+                    .col-md-10.col-md-offset-1
                       br
                       table.table-hover
                         br
                         tr
-                          th(style='width:30%') V I D E O - N A M E 
+                          th(style='width:50%') V I D E O - N A M E 
                           th(style='width:30%') CA T E G O R Y
                           th(style='width:25%')
 
                         tbody#data
-                          each video, i in videos
-                            tr.success
-                              td= video.videoTitle
-                              p
-                              td= video.videoCategory
-                              p
-                              td
-                                a.red-text(href= "/videos/" + video._id)
-                                  button.btn.btn-success(type='button') See Video
                               p
                 br
                 br
