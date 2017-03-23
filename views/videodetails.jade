@@ -25,16 +25,20 @@ block content
                 br
                 | #{videoInfo.videoDate}
               br
-              if (user.username == "teamjuan")
-                a.red-text(href= '/videos/' + videoInfo._id + '/edit')
-                  button.button3(type='button') U P D A T E
-                a.red-text(href= '/videos')
-                  button.button3(type='button') B A C K
-                a.red-text(href= '/videos/' + videoInfo._id + '/delete', onclick= 'return confirmDelete()')
-                  button.button3(type='button') D E L E T E
+              center
+                if (user.username == "teamjuan")
+                  .btn-group(role='group', aria-label='...')
+                    a.red-text(href= '/videos/' + videoInfo._id + '/edit')
+                      button.btn.btn-success(type='button') Update
+                    &nbsp;
+                    a.red-text(href= '/videos')
+                      button.btn.btn-primary(type='button') Back to List
+                    &nbsp;
+                    a.red-text(href= '/videos/' + videoInfo._id + '/delete', onclick= 'return confirmDelete()')
+                      button.btn.btn-warning(type='button') Delete video
         br
 
-  form.form-horizontal(method= 'POST', action= '/videos/newcomment')
+  form.form-horizontal(method= 'POST', action= '/:videoId/newcomment')
     .row
       br
       br

@@ -161,6 +161,7 @@ router.post('/new', function(req, res) {
 
 //Adding new Comment
 router.get('/newcomment', function(req, res) {
+ 
   console.log();
   var data = {
     status: addStatus,
@@ -171,13 +172,14 @@ router.get('/newcomment', function(req, res) {
 });
 
 //POST Method when submitting new Entry
-router.post('/newcomment', function(req, res) {
+router.post('/:videoId/newcomment', function(req, res) {
+  var videoId = req.params.videoId
   var dataToSave = {
     videoComment: req.body.videoComment,
     commentDate: getDate,
   };
 
-  var data = new Entry(dataToSave)
+  var data = new Comment(dataToSave)
   data.save(function(err, comments){
     if(err) {
       console.log('Saving Data Failed!');

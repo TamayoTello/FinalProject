@@ -2,28 +2,28 @@ function validateTaskForm() {
 
 	var checkCount = 0;
 
-	var getTaskName = document.getElementById('taskName').value;
-	var getTaskDetails = document.getElementById('taskDetails').value;
-	var getTaskDate = document.getElementById('taskDate').value;
+	var getvideoName = document.getElementById('videoName').value;
+	var getvideoEmbed = document.getElementById('videoEmbed').value;
+	var getvideoDetails = document.getElementById('videoDetails').value;
 
 	var errorMessage = "Kindly fill up the following field/s or make sure that you entered a valid input to proceed: \n\n"
 
-	if (getTaskName === "") {
-		errorMessage += "Task Name\n";
+	if (getvideoName === "") {
+		errorMessage += "Video Name\n";
 	}
 	else {
 		checkCount++;
 	}
 
-	if (getTaskDetails === "") {
-		errorMessage += "Task Details\n";
+	if (getvideoEmbed === "") {
+		errorMessage += "Video Embed\n";
 	}
 	else {
 		checkCount++;
 	}
 
-	if (getTaskDate === "") {
-		errorMessage += "Task Date\n";
+	if (getvideoDetails === "") {
+		errorMessage += "Video Details\n";
 	}
 	else {
 		checkCount++;
