@@ -133,16 +133,14 @@ if(window.location.pathname === '/videos') {
 			
 			});
 			});
-	
-		
-			fetch('api/v1/entry/count').then(function(res){
-				res.json().then(function(count){
-					console.log('count', count)
-					var banner = document.getElementById('banner-description');
-					banner.innerHTML = 'There are ' + count.count + ' videos';
-				});
-			localStorage.setItem("search", null);
+		fetch('api/v1/entry/count').then(function(res){
+			res.json().then(function(count){
+				console.log('count', count)
+				var banner = document.getElementById('banner-description');
+				banner.innerHTML = 'There are ' + count.count + ' videos';
 			});
+		localStorage.setItem("search", null);
+		});
 	}
 
 	else {
@@ -163,8 +161,8 @@ if(window.location.pathname === '/videos') {
 						'style = "text-transform: capitalize" ' +
 						'white-text">See all videos</a>')
 
-					document.getElementById('banner-description').innerHTML = "Found: " + result.length +
-					"entry related to " + localStorage.getItem("search");
+					document.getElementById('banner-description').innerHTML = "Found " + result.length +
+					" entry related to " + localStorage.getItem("search");
 				}
 
 				else {
@@ -174,14 +172,13 @@ if(window.location.pathname === '/videos') {
 						'white-text">See all videos</a>')
 
 					document.getElementById('banner-description').innerHTML = "Found " + result.length +
-					" entries" + localStorage.getItem("search");
+					"entries" + localStorage.getItem("search");
 				}
 
 				var tbody = document.getElementById('data');
 				result.forEach(function(result){
 					tbody.insertAdjacentHTML('beforeend', '<tr><td>'  + result.videoTitle + '</td><td>' + result.videoCategory + '</td><td>' +
 				'</td>' + '<td><a href = "/videos/' + result._id + '", class = "red-text">' + '<input type = "button",  class = "btn btn-success", value = "See Video"/>' + '</td></tr>' );
-					tbody.insertAdjacentHTML('beforeend', 'br' );
 				});
 				localStorage.setItem("search", null);
 				});

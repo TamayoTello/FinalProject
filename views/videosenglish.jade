@@ -6,18 +6,10 @@ block content
       .col-md-9.col-sm-12.content-holder
         // CONTENT
         #menu-container
-          a.site-brand
-            .box-content
-              h3.widget-title3 V I D E O - L I S T
-              form(method='post', action='/videos', onsubmit='forSearching()')
-                input#search(type='search', placeholder='Search Video Here', style= 'color: black')
-              br
-              h4#banner-description(style= 'color: white')
-
           .container
-              h3 English
+              h1 English
               ul.nav.nav-tabs
-                li.active
+                li
                   a(href='/videos') All Videos
                 li
                   a(href='/videos/Science') Science
@@ -41,25 +33,25 @@ block content
                 form.task-form(action='/videos', method='get')
                   .row
                     br
-                    br
-                    fieldset.col-md-offset-3.col-md-10
+                    .col-md-10.col-md-offset-1
                       br
-                      table
+                      table.table-hover
                         br
                         tr
-                          th(style='width:30%') V I D E O - N A M E 
-                          th(style='width:30%') CA T E G O R Y
+                          th(style='width:50%') Video Name 
+                          th(style='width:50%') Category
                           th(style='width:25%')
 
                         tbody#data
-                          each video, i in videos
-                            if (video.videoCategory == "English")
-                              tr
-                                td= video.videoTitle
-                                td= video.videoCategory
-                                td
-                                  a.red-text(href= "/videos/" + video._id)
-                                    button.button(type='button') S E E - V I D E O
+                            each video, i in videos
+                              if (video.videoCategory == "English")
+                                tr
+                                  td= video.videoTitle
+                                  td= video.videoCategory
+                                  td
+                                    a.red-text(href= "/videos/" + video._id)
+                                      button.btn.btn-warning(type='button') See Video
+                                  p
                 br
                 br
                         

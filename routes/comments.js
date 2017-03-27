@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
 
+var Entry = require('../models/entry');
 var Comment = require('../models/comments');
-
 var date = new Date();
 var getDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 
@@ -19,36 +19,37 @@ router.use(function(req, res, next) {
 });
 
 //List all the entries
-  router.get('/', function(req, res){
+  router.get('/videos/:videoId', function(req, res){
   Comment.find(function(err, comments){
-    res.render('videolist', {
+    res.render('videodetails', {
         comments: comments,
         user: req.user
       });
   })
 });
   router.post('/', function(req,res){
-    res.redirect('/comments')
+    res.redirect('/videos/:videoId')
   })
 
-//Adding new Comment
+
+//Adding New Entry
 router.get('/new', function(req, res) {
   console.log();
   var data = {
     status: addStatus,
     user: req.user
   }
-  res.render('addvideo', data);
+  res.render('videodetails', data);
   addStatus = "";
 });
 
 //POST Method when submitting new Entry
 router.post('/new', function(req, res) {
   var dataToSave = {
-    videoId: req.params.videoId,
-    commentUser: req.user.username,
+    idComment: req.body.idComment,
+    userComment: req.body.userComment,
     videoComment: req.body.videoComment,
-    commentDate: getDate,
+    commentDate: getDate
   };
 
   var data = new Comment(dataToSave)
@@ -60,13 +61,13 @@ router.post('/new', function(req, res) {
     else {
       console.log('Saving Data Successful!');
       addStatus = 'Saving Data Success';
-      res.redirect('/comments');
+      res.redirect('/videos/:videoId');
     }
+    });
   });
-});
 
 
-//Page of each Comment
+//Page of each Entry
 router.get('/:commentId', function(req, res) {
   var commentId = req.params.commentId;
   Comment.findById(commentId, function(err, info){
@@ -94,8 +95,6 @@ router.post('/:commentId', function(req, res){
   var commentId = req.params.commentId;
 
   var newData = {
-    commentId: req.params.commentId,
-    commentUser: req.user.username,
     videoComment: req.body.videoComment,
     commentDate: getDate,
   }

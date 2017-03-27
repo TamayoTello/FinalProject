@@ -86,6 +86,7 @@ app.use('/', index);
 app.use('/auth', auth);
 app.use('/videos', videos);
 app.use('/requests', requests);
+app.use('/comments', comments);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

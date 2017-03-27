@@ -4,7 +4,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 var Entry = require('../models/entry');
 var Comment = require('../models/comments');
-
 var date = new Date();
 var getDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 
@@ -159,40 +158,6 @@ router.post('/new', function(req, res) {
 });
 
 
-//Adding new Comment
-router.get('/newcomment', function(req, res) {
- 
-  console.log();
-  var data = {
-    status: addStatus,
-    user: req.user
-  }
-  res.render('videodetails', data);
-  addStatus = "";
-});
-
-//POST Method when submitting new Entry
-router.post('/:videoId/newcomment', function(req, res) {
-  var videoId = req.params.videoId
-  var dataToSave = {
-    videoComment: req.body.videoComment,
-    commentDate: getDate,
-  };
-
-  var data = new Comment(dataToSave)
-  data.save(function(err, comments){
-    if(err) {
-      console.log('Saving Data Failed!');
-      addStatus = 'Saving Data Failed!';
-    }
-    else {
-      console.log('Saving Data Successful!');
-      addStatus = 'Saving Data Success';
-      res.redirect('/videos');
-    }
-  });
-});
-
 //Page of each Entry
 router.get('/:videoId', function(req, res) {
   var videoId = req.params.videoId;
@@ -202,6 +167,12 @@ router.get('/:videoId', function(req, res) {
       user: req.user
     });
   }); 
+  Comment.find(function(err, comments){
+    res.render('videodetails', {
+        comments: comments,
+        user: req.user
+      });
+  })
 });
 
 //Edit Page

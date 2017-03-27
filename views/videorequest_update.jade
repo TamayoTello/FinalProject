@@ -2,46 +2,162 @@ extends layout
 
 block content
 
-  #page-content.container
+  if (user.username =="teamjuan")
+   #page-content.container
     .row
-      .col-md-9.col-sm-12.content-holder
-        //CONTENT
-        #menu-container
-          a.site-brand
-            .box-content
-              h3.widget-title U P D A T E - V I D E O
-            .col-md-15.col-sm-15
-              .box-content
+      .col-md-8.col-md-offset-1
+        // CONTENT
+        br
+        .login-container
+          .page-header
+            h1
+              center
+                | Manage Request
+            h3
+              center  
+                | Edit, Accept, Delete.
 
-                form.task-form(method= 'POST', action= '/videos/new', onsubmit= 'return validateTaskForm()')
-                    .row
-                      br
-                      br
-                      fieldset.col-md-offset-3.col-md-9
-                        p
-                          | V I D E O  - T I T L E  :
-                          input#taskName.task(name='videoTitle', type='text', value=  requestInfo.reqVideoTitle)
-                        p
-                          | V I D E O - E M B E D :
-                          br
-                          input#taskDetails.task(name='videoEmbed', type='text', value= requestInfo.reqVideoEmbed)
-                        p
-                          | V I D E O - D E T A I L S :
-                          br
-                          input#taskDetails.task(name='videoDetails', type='text', value= requestInfo.reqVideoDetails)
-                        p
-                          | V I D E O - C A T E G O R Y :
-                          br
-                          select(name='videoCategory', selected= requestInfo.reqVideoCategory)
+          form.form-horizontal(method= 'POST', action= '/videos/new', onsubmit= 'return validateTaskForm()')
+            .row
+              br
+              br
+              br
+              .col-md-10.col-md-offset-3
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Video Title
+                  input.form-control(name='videoTitle', type='text', value=  requestInfo.reqVideoTitle, aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Video Embed
+                  input.form-control(name='videoEmbed', value= requestInfo.reqVideoEmbed, aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  span#sizing-addon1.input-group-addon Video Details
+                  input.form-control(name='videoDetails', type='text', rows='3', cols='10', value= requestInfo.reqVideoDetails, aria-describedby='sizing-addon1')
+                p
+                p
+                .input-group
+                  if (requestInfo.reqVideoCategory == "Science")
+                    span#sizing-addon1.input-group-addon Video Category
+                    select.form-control(name='videoCategory')
+                      option(value='No Category' ) No Category
+                      option(value='Mathematics') Mathematics
+                      option(value='English') English
+                      option(value='Filipino') Filipino
+                      option(value='Science', selected= "selected") Science
+                      option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                      option(value='AP') Araling Panlipunan
+                      option(value='Values') Values
+                  else
+                    if (requestInfo.reqVideoCategory == "Mathematics")
+                      span#sizing-addon1.input-group-addon Video Category
+                      select.form-control(name='videoCategory')
+                        option(value='No Category' ) No Category
+                        option(value='Mathematics', selected= "selected") Mathematics
+                        option(value='English') English
+                        option(value='Filipino') Filipino
+                        option(value='Science') Science
+                        option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                        option(value='AP') Araling Panlipunan
+                        option(value='Values') Values
+                    else 
+                      if (requestInfo.reqVideoCategory == "No Category")
+                        span#sizing-addon1.input-group-addon Video Category
+                        select.form-control(name='videoCategory')
+                          option(value='No Category', selected= "selected") No Category
+                          option(value='Mathematics') Mathematics
+                          option(value='English') English
+                          option(value='Filipino') Filipino
+                          option(value='Science') Science
+                          option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                          option(value='AP') Araling Panlipunan
+                          option(value='Values') Values
+                      else 
+                        if (requestInfo.reqVideoCategory == "English")
+                          span#sizing-addon1.input-group-addon Video Category
+                          select.form-control(name='videoCategory')
                             option(value='No Category') No Category
                             option(value='Mathematics') Mathematics
-                            option(value='English') English
+                            option(value='English', selected= "selected") English
                             option(value='Filipino') Filipino
                             option(value='Science') Science
                             option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
                             option(value='AP') Araling Panlipunan
                             option(value='Values') Values
-                          br
-                          br
-                        input#submit.button.default(name='submit', type='submit', value='Accept Item')
+                        else
+                          if (requestInfo.reqVideoCategory == "Filipino")
+                            span#sizing-addon1.input-group-addon Video Category
+                            select.form-control(name='videoCategory')
+                              option(value='No Category') No Category
+                              option(value='Mathematics') Mathematics
+                              option(value='English') English
+                              option(value='Filipino', selected= "selected") Filipino
+                              option(value='Science') Science
+                              option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                              option(value='AP') Araling Panlipunan
+                              option(value='Values') Values
+                          else
+                            if (requestInfo.reqVideoCategory == "MAPEH")
+                              span#sizing-addon1.input-group-addon Video Category
+                              select.form-control(name='videoCategory')
+                                option(value='No Category') No Category
+                                option(value='Mathematics') Mathematics
+                                option(value='English') English
+                                option(value='Filipino') Filipino
+                                option(value='Science') Science
+                                option(value='MAPEH', selected= "selected") MAPEH (Music, Arts, P.E. Health)
+                                option(value='AP') Araling Panlipunan
+                                option(value='Values') Values
+                            else
+                              if (requestInfo.reqVideoCategory == "AP")
+                                span#sizing-addon1.input-group-addon Video Category
+                                select.form-control(name='videoCategory')
+                                  option(value='No Category') No Category
+                                  option(value='Mathematics') Mathematics
+                                  option(value='English') English
+                                  option(value='Filipino') Filipino
+                                  option(value='Science') Science
+                                  option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                                  option(value='AP', selected= "selected") Araling Panlipunan
+                                  option(value='Values') Values
+                              else
+                                if (requestInfo.reqVideoCategory == "Values")
+                                  span#sizing-addon1.input-group-addon Video Category
+                                  select.form-control(name='videoCategory')
+                                    option(value='No Category') No Category
+                                    option(value='Mathematics') Mathematics
+                                    option(value='English') English
+                                    option(value='Filipino') Filipino
+                                    option(value='Science') Science
+                                    option(value='MAPEH') MAPEH (Music, Arts, P.E. Health)
+                                    option(value='AP') Araling Panlipunan
+                                    option(value='Values', selected= "selected") Values
+                br
+                br
 
+                br
+                .col-md-5.col-md-offset-2
+                  center
+                    .btn-group
+                      button.btn.btn-warning(name='submit', type='submit') Accept Request
+                p
+        .panel-login-footer
+          .box-content
+            h3
+              center
+                | Check out other Requests?
+                br
+                p
+                .btn-group
+                  a(href= '/requests')
+                    button.btn.btn-success(type='button') Click Here
+        p
+        
+  else
+    a.site-brand
+      .box-content
+        h3.widget-title R E S T R I C T E D - A R E A  
