@@ -3,51 +3,77 @@ extends layout
 block content
 
   #page-content.container
-    br
-    br
     .row
-      .col-md-8
-        .video-container
-        iframe(width= '600', height= '400', src= videoInfo.videoEmbed, frameborder= '0', allowfullscreen)
+      .col-md-8.col-md-offset-1
+        // CONTENT
         br
-      .col-md-4
-          center
-            h3  #{videoInfo.videoTitle} 
-          br
-          form.task-form(action='/videos', method='get')
-            .row
-              br
-              p 
-                | #{videoInfo.videoDetails}
-              br
-              p
-                br
-                | #{videoInfo.videoDate}
-              br
+        .login-container
+          .page-header
+            h1
               center
+                | #{videoInfo.videoTitle}
+                p
+            h5
+              center  
+                | #{videoInfo.videoDetails}
+                p
+                | #{videoInfo.videoDate}
+                p
+          br
+          p
+
+      .col-md-10.col-md-offset-2
+        p
+        p
+        br
+        .video-container
+            iframe(width= '650', height= '400', src= videoInfo.videoEmbed, frameborder= '0', allowfullscreen)
+            br
+          form.task-form(action='/videos', method='get')
+            p
+            br
+            .row
+              .col-md-7.col-md-offset-2
                 if (user.username == "teamjuan")
                   .btn-group(role='group', aria-label='...')
+                    &nbsp;
+                    &nbsp;
                     a.red-text(href= '/videos/' + videoInfo._id + '/edit')
-                      button.btn.btn-success(type='button') Update
+                      button.btn.btn-success(type='button') Update Video
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
                     &nbsp;
                     a.red-text(href= '/videos')
                       button.btn.btn-primary(type='button') Back to List
                     &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
                     a.red-text(href= '/videos/' + videoInfo._id + '/delete', onclick= 'return confirmDelete()')
-                      button.btn.btn-warning(type='button') Delete video
-        form.form-horizontal(method= 'POST', action= '/comments/new')
-          .row
-            br
-            br
-            br
-            p
-            .input-group
-              input.form-control(name='idComment', type='text', value= videoInfo._id, aria-describedby='sizing-addon1', readonly)
-            .input-group
-              input.form-control(name='userComment', type='text', value= user.username, aria-describedby='sizing-addon1', readonly)
-            .input-group
-              input.form-control(name='videoComment', type='text',  aria-describedby='sizing-addon1')
-            .btn-group
-              button.btn.btn-success(name='submit', type='submit') Comment
-            p
-      br
+                      button.btn.btn-warning(type='button') Delete 
+          .login-container
+            form.form-horizontal(method= 'POST', action= '/comments/new')
+              .container
+                .row
+                  .col-md-5.col-md-offset-0
+                    p
+                      .input-group
+                        span#sizing-addon1.input-group-addon Video ID
+                        input.form-control(name='idComment', type='text', value= videoInfo._id, aria-describedby='sizing-addon1', readonly)
+                      p
+                      p
+                      .input-group
+                        span#sizing-addon1.input-group-addon Logged In as: 
+                        input.form-control(name='userComment', type='text', value= user.username, aria-describedby='sizing-addon1', readonly)
+                      p
+                      p
+                      .input-group
+                        span#sizing-addon1.input-group-addon
+                        input.form-control(name='videoComment', placeholder='Place your Comment Here', aria-describedby='sizing-addon1')
+                    &nbsp;
+                    &nbsp;
+                    .btn-group
+                      button.btn.btn-success(name='submit', type='submit') Comment
+                    p
+              br

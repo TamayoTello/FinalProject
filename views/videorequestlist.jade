@@ -6,41 +6,46 @@ block content
       .col-md-9.col-sm-12.content-holder
         // CONTENT
         #menu-container
-          a.site-brand
-            .box-content
-              h3.widget-title3 V I D E O - L I S T
-              form(method='post', action='/requests', onsubmit='forSearching()')
-                input#search(type='search', placeholder='Search Video Here', style= 'color: black')
-              br
-              h4#banner-description(style= 'color: white')
 
           if (user.username == "teamjuan")
-            .container.center#allLinks
-            .col-md-15.col-sm-15
-              .box-content2
-                form.task-form(action='/videos', method='get')
-                  .row
-                    br
-                    br
-                    fieldset.col-md-offset-3.col-md-10
+            .login-container
+              .page-header
+                h1
+                  center
+                    | Video Requests
+                h3
+                  center  
+                    | Manage requests here.
+              .container.center#allLinks
+              .col-md-15.col-sm-15
+                .box-content2
+                  form.task-form(action='/requests', method='get')
+                    .row
                       br
-                      table
+                      .col-md-10.col-md-offset-0
                         br
-                        tr
-                          th(style='width:30%') V I D E O - N A M E 
-                          th(style='width:30%') CA T E G O R Y
-                          th(style='width:25%')
+                        table.table-hover
+                          br
+                          tr
+                            th(style='width:50%') Video Name
+                            th(style='width:50%') Requested By
+                            th(style='width:25%')
 
-                        tbody#data
-                          each request, i in requests
-                              tr
-                                td= request.reqVideoTitle
-                                td= request.reqVideoCategory
-                                td
-                                  a.red-text(href= "/requests/" + request._id)
-                                    button.button(type='button') S E E - R E Q U E S T
+                          tbody#data
+                             
+
+                          tbody#data
+                              each request, i in requests
+                                tr
+                                  td= request.reqVideoTitle
+                                  td= request.reqUsername
+                                  td
+                                    a.red-text(href= "/requests/" + request._id)
+                                      button.btn.btn-danger(type='button') See Request
+                              p
+                  br
+                  br
           else
             a.site-brand
               .box-content
                 h3.widget-title3 N O - P E R M I S S I O N
-                        

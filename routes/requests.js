@@ -44,24 +44,24 @@ router.get('/new', function(req, res) {
 //POST Method when submitting new Request
 router.post('/new', function(req, res) {
   var dataToSave = {
+    reqUsername: req.body.reqUsername,
     reqVideoTitle: req.body.reqVideoTitle,
     reqVideoEmbed: req.body.reqVideoEmbed,
     reqVideoDetails: req.body.reqVideoDetails,
     reqVideoCategory: req.body.reqVideoCategory,
-    videoDate: getDate,
-    videoUpdateDate: getDate
+    reqVideoDate: getDate,
   };
 
   var data = new Request(dataToSave)
   data.save(function(err, requests){
     if(err) {
       console.log('Saving Data Failed!');
-      addStatus = 'Saving Data Failed!';
+      addStatus = 'Sending Request Failed';
     }
     else {
       console.log('Saving Data Successful!');
-      addStatus = 'Saving Data Success';
-      res.redirect('/videos');
+      addStatus = 'Your Request Has Been Recorded';
+      res.redirect('/requests/new');
     }
   });
 });
@@ -98,7 +98,7 @@ router.post('/:requestId', function(req, res){
     videoEmbed: req.body.videoEmbed,
     videoDetails: req.body.videoDetails,
     videoCategory: req.body.videoCategory,
-    videoUpdateDate: getDate
+    videoUpdateDate: getDate,
   }
 
   Request.update({_id: requestId}, {$set: newData}, function(err, result) {
@@ -117,7 +117,7 @@ router.post('/:requestId', function(req, res){
 router.get('/:requestId/delete', function(req, res){
   var requestId = req.params.requestId;
   Request.findByIdAndRemove(requestId).exec();
-  res.redirect('/videos')
+  res.redirect('/requests')
 })
 
 module.exports = router;

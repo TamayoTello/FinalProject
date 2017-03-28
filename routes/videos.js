@@ -151,8 +151,8 @@ router.post('/new', function(req, res) {
     }
     else {
       console.log('Saving Data Successful!');
-      addStatus = 'Saving Data Success';
-      res.redirect('/videos');
+      addStatus = 'Video Item Has Been Recorded';
+      res.redirect('/videos/new');
     }
   });
 });
@@ -196,6 +196,7 @@ router.post('/:videoId', function(req, res){
     videoEmbed: req.body.videoEmbed,
     videoDetails: req.body.videoDetails,
     videoCategory: req.body.videoCategory,
+    videoUpdateDate: req.body.videoUpdateDate,
   }
 
   Entry.update({_id: videoId}, {$set: newData}, function(err, result) {

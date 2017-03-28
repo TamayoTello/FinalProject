@@ -71,7 +71,7 @@ router.post('/register', function(req, res) {
     }
     else {
       console.log(getUsername)
-      usernameStatus = 'E X I S T I N G - U S E R N A M E ! !'; 
+      usernameStatus = 'Existing Username'; 
       res.redirect('/auth/register');
     }
   });
@@ -96,9 +96,9 @@ passport.use(new LocalStrategy(
     User.getUserByUsername(username, function(err, user){
       if(err) throw err;
       if(!user) {
-        console.log('U S E R N A M E - D O E S - N O T - E X I S T ! !');
-        loginStatus= "I N C O R R E C T - U S E R N A M E - O R - P A S S W O R D ! !";
-        return done(null, false, {message: 'U N K N O W N - U S E R'});
+        console.log('Username Does not Exist');
+        loginStatus= "Incorrect Username or Password";
+        return done(null, false, {message: 'Unknown User'});
       }
 
       User.comparePassword(password, user.password, function(err,  isMatch){
@@ -108,8 +108,8 @@ passport.use(new LocalStrategy(
           return done(null, user);
         }
         else {
-          loginStatus= "I N C O R R E C T - P A S S W O R D ! !";
-          return done(null, false, {message: 'W R O N G - P A S S W O R D'});
+          loginStatus= "Incorrect Password";
+          return done(null, false, {message: 'Wrong Password'});
         }
       });
     });

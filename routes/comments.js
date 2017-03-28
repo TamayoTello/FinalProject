@@ -19,7 +19,7 @@ router.use(function(req, res, next) {
 });
 
 //List all the entries
-  router.get('/videos/:videoId', function(req, res){
+  router.get('/', function(req, res){
   Comment.find(function(err, comments){
     res.render('videodetails', {
         comments: comments,
@@ -28,7 +28,7 @@ router.use(function(req, res, next) {
   })
 });
   router.post('/', function(req,res){
-    res.redirect('/videos/:videoId')
+    res.redirect('/videos/' + videoId)
   })
 
 
@@ -49,7 +49,7 @@ router.post('/new', function(req, res) {
     idComment: req.body.idComment,
     userComment: req.body.userComment,
     videoComment: req.body.videoComment,
-    commentDate: getDate
+    commentDate: getDate,
   };
 
   var data = new Comment(dataToSave)

@@ -3,6 +3,10 @@ var mongoose = require('mongoose'),
     passportLocalMongoose = require('passport-local-mongoose');
 
 var videoRequest = new Schema({
+    reqUsername: {
+        type: String,
+        required: true
+    },
     reqVideoTitle: {
     	type: String,
     	required: true

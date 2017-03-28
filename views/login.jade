@@ -21,12 +21,13 @@ block content
               br
               br
               br
+              .col-md-8.col-md-offset-1
+                center
+                  if (loginStatus)
+                        h4(style= "padding: 1%")= loginStatus
+                        br
+              br
               .col-md-10.col-md-offset-3
-                p
-                if (loginStatus)
-                  center
-                    h6(style= "padding: 1%")= loginStatus
-                    br
                 p
                 p
                 .input-group
