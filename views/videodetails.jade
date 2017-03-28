@@ -79,7 +79,7 @@ block content
         .container.center#allLinks
         .col-md-15.col-sm-15
           .box-content2
-            form.task-form(action= '/videos/' + videoId, method='get', onsubmit= 'return validateTaskForm()')
+            form.task-form(action= '/videos/' + videoId, method='get')
               .row
                 br
                 .col-md-10.col-md-offset-0
@@ -98,14 +98,14 @@ block content
                         each comment, i in comments
                           if (comment.idComment == videoInfo._id)
                             tr
-                              td= comment.userComment
+                              td= comment.userComment + " :"
                               td= comment.videoComment
                               if (comment.userComment == user.username)
                                 td
-                                  a.red-text(href= "/comments/" + comment._id + "delete")
+                                  a.red-text(href= "/comments/" + comment._id + "/delete", onclick= 'return confirmDelete()')
                                     button.btn.btn-danger(type='button') Delete Comment
                               else
-                                td
+                                td= comment.commentDate
                           p
               br
               br

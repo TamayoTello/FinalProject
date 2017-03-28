@@ -115,7 +115,7 @@ router.post('/:commentId', function(req, res){
 router.get('/:commentId/delete', function(req, res){
   var commentId = req.params.commentId;
   Comment.findByIdAndRemove(commentId).exec();
-  res.redirect('/videos')
+  res.redirect('/videos/')
 })
 
 module.exports = router;
