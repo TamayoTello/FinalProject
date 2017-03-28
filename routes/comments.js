@@ -3,7 +3,7 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
 
 var Entry = require('../models/entry');
-var Comment = require('../models/comments');
+var Comment = require('../models/videocomments');
 var date = new Date();
 var getDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 
@@ -19,7 +19,7 @@ router.use(function(req, res, next) {
 });
 
 //List all the entries
-  router.get('/', function(req, res){
+router.get('/', function(req, res){
   Comment.find(function(err, comments){
     res.render('videodetails', {
         comments: comments,
@@ -28,7 +28,7 @@ router.use(function(req, res, next) {
   })
 });
   router.post('/', function(req,res){
-    res.redirect('/videos/' + videoId)
+    res.redirect('/videos/')
   })
 
 
@@ -61,7 +61,7 @@ router.post('/new', function(req, res) {
     else {
       console.log('Saving Data Successful!');
       addStatus = 'Saving Data Success';
-      res.redirect('/videos/:videoId');
+      res.redirect('/videos/');
     }
     });
   });

@@ -3,7 +3,7 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
 
 var Entry = require('../models/entry');
-var Comment = require('../models/comments');
+var Comment = require('../models/videocomments');
 var date = new Date();
 var getDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 
@@ -19,7 +19,7 @@ router.use(function(req, res, next) {
 });
 
 //List all the entries
-  router.get('/', function(req, res){
+router.get('/', function(req, res){
   Entry.find(function(err, videos){
     res.render('videolist', {
         videos: videos,
@@ -161,19 +161,23 @@ router.post('/new', function(req, res) {
 //Page of each Entry
 router.get('/:videoId', function(req, res) {
   var videoId = req.params.videoId;
+  var videoEntry;
+  var commentVideo;
+
   Entry.findById(videoId, function(err, info){
-    res.render('videodetails', {
-      videoInfo: info,
-      user: req.user
-    });
-  }); 
+    if (err) throw err;
+
+    videoEntry = info;
+
   Comment.find(function(err, comments){
     res.render('videodetails', {
-        comments: comments,
-        user: req.user
-      });
+    comments: comments,
+    videoInfo: videoEntry,
+    user: req.user
+    });
   })
 });
+});  
 
 //Edit Page
 router.get('/:videoId/edit', function(req, res) {

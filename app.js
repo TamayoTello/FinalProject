@@ -62,8 +62,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var User = require('./models/users');
-var Comment = require('./models/comments');
-
+var Comment = require('./models/videocomments');
 
 
 
