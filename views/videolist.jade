@@ -6,12 +6,11 @@ block content
       .col-md-9.col-sm-12.content-holder
         // CONTENT
         #menu-container
-          a.site-brand
             .box-content
               .page-header
                 h3 Search a Video
                   form(method='post', action='/videos', onsubmit='forSearching()')
-                    input#search(type='search', placeholder='Type the Video Title', style= 'color: black')
+                    input#search.form-control(type='search', placeholder= 'Press enter after typing the video title')
               br
               h4#banner-description(style= 'color: white')
 
